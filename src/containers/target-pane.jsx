@@ -1,9 +1,6 @@
 const bindAll = require('lodash.bindall');
 const React = require('react');
 
-const SpeechExtension = require('../lib/libraries/speech-extension.json');
-const WedoExtension = require('../lib/libraries/wedo-extension.json');
-
 const {connect} = require('react-redux');
 
 const {
@@ -89,13 +86,13 @@ class TargetPane extends React.Component {
         this.props.vm.setEditingTarget(id);
     }
     handleSpeechClick () {
-        this.props.vm.addSprite2(JSON.stringify(SpeechExtension.sprite));
+        // this.props.vm.addSprite2(JSON.stringify(SpeechExtension.sprite));
         // this.props.onSetSpeechToolbox();
         // this.selectExtensionsCategory();
         this.props.vm.runtime.HACK_SpeechBlocks.startSpeechRecogntion();
     }
     handleWedoClick () {
-        this.props.vm.addSprite2(JSON.stringify(WedoExtension.sprite));
+        // this.props.vm.addSprite2(JSON.stringify(WedoExtension.sprite));
         this.props.vm.runtime.HACK_WeDo2Blocks.connect();
         // this.props.onSetWedoToolbox();
         // this.selectExtensionsCategory();
