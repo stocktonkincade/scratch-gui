@@ -1,42 +1,33 @@
-const UPDATE_TOOLBOX = 'scratch-gui/toolbox/UPDATE_TOOLBOX';
-
-
-const {getSpriteToolbox, getStageToolbox, getSpeechToolbox, getWedoToolbox} = require('../lib/toolbox-xml');
+const UPDATE_EXTENSIONS = 'scratch-gui/toolbox/UPDATE_EXTENSIONS';
 
 const initialState = {
-    currentToolbox: getSpriteToolbox()
+    wedo: false,
+    speech: false
 };
 
 const reducer = function (state, action) {
     if (typeof state === 'undefined') state = initialState;
     switch (action.type) {
-    case UPDATE_TOOLBOX:
-        return Object.assign({}, state, {
-            currentToolbox: action.toolbox
-        });
+    case UPDATE_EXTENSIONS:
+        return Object.assign({}, state, action.extensions);
     default:
         return state;
     }
 };
 
-reducer.updateToolbox = function (toolbox) {
+reducer.updateExtensions = function (extensions) {
     return {
-        type: UPDATE_TOOLBOX,
-        toolbox: toolbox
+        type: UPDATE_EXTENSIONS,
+        extensions: extensions
     };
 };
 
-reducer.setSpriteToolbox = function () {
-    return reducer.updateToolbox(getSpriteToolbox());
+reducer.enableWedo = function () {
+    return reducer.updateExtensions({wedo: true});
 };
-reducer.setStageToolbox = function () {
-    return reducer.updateToolbox(getStageToolbox());
-};
-reducer.setSpeechToolbox = function () {
-    return reducer.updateToolbox(getSpeechToolbox());
-};
-reducer.setWedoToolbox = function () {
-    return reducer.updateToolbox(getWedoToolbox());
+
+reducer.enableSpeech = function () {
+    return reducer.updateExtensions({speech: true});
 };
 
 module.exports = reducer;

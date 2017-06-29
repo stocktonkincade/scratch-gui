@@ -8,6 +8,7 @@ const VMScratchBlocks = require('../lib/blocks');
 const VM = require('scratch-vm');
 const Prompt = require('./prompt.jsx');
 const BlocksComponent = require('../components/blocks/blocks.jsx');
+const {getToolbox} = require('../lib/toolbox-xml');
 
 const addFunctionListener = (object, property, callback) => {
     const oldFn = object[property];
@@ -47,7 +48,7 @@ class Blocks extends React.Component {
     }
     componentDidMount () {
         const workspaceConfig = defaultsDeep({
-            toolbox: this.props.toolbox || this.ScratchBlocks.Blocks.defaultToolbox
+            toolbox: this.ScratchBlocks.Blocks.defaultToolbox
         }, Blocks.defaultOptions, this.props.options);
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
         window.workspace = this.workspace;
@@ -63,11 +64,19 @@ class Blocks extends React.Component {
     }
 
     componentDidUpdate (prevProps) {
-        if (prevProps.toolbox !== this.props.toolbox) {
-            const selectedCategoryName = this.workspace.toolbox_.getSelectedItem().name_;
-            this.workspace.updateToolbox(this.props.toolbox);
-            this.setToolboxSelectedItemByName(selectedCategoryName);
+        if (prevProps.extensions !== this.props.extensions) {
+            if (!prevProps.extensions.speech && this.props.extensions.speech) {
+                this.workspace.updateToolbox(getToolbox(this.props.extensions));
+                this.setToolboxSelectedItemByName('Speech');
+                this.props.vm.runtime.HACK_SpeechBlocks.startSpeechRecogntion();
+            }
+            if (!prevProps.extensions.wedo && this.props.extensions.wedo) {
+                this.workspace.updateToolbox(getToolbox(this.props.extensions));
+                this.setToolboxSelectedItemByName('Lego WeDo');
+                this.props.vm.runtime.HACK_WeDo2Blocks.connect();
+            }
         }
+
         if (this.props.isVisible === prevProps.isVisible) {
             return;
         }
@@ -226,6 +235,10 @@ class Blocks extends React.Component {
 }
 
 Blocks.propTypes = {
+    extensions: PropTypes.shape({
+        wedo: PropTypes.bool,
+        speech: PropTypes.bool
+    }),
     isVisible: PropTypes.boolean,
     options: PropTypes.shape({
         media: PropTypes.string,
@@ -248,7 +261,6 @@ Blocks.propTypes = {
         }),
         comments: PropTypes.bool
     }),
-    toolbox: PropTypes.string,
     vm: PropTypes.instanceOf(VM).isRequired
 };
 
@@ -282,11 +294,8 @@ Blocks.defaultProps = {
     options: Blocks.defaultOptions
 };
 
-// @todo: add toolbox reducer
-// @todo: connect toolbox state and dispatch to blocks props
-
 const mapStateToProps = state => ({
-    toolbox: state.toolbox.currentToolbox
+    extensions: state.toolbox
 });
 
 // const mapDispatchToProps = dispatch => ({

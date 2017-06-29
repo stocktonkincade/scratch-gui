@@ -6,168 +6,128 @@ function wrapCategories (categories) {
     }</xml>`;
 }
 
-let hasSpeech = false;
-let hasWedo = false;
-
-function getGlobalExtensionBlocks () {
-    let xml = extensionsCategory;
-    if (hasSpeech) {
-        xml += speechLabel;
-        xml += speechGlobal;
+function getExtensions (extensions) {
+    let result = '';
+    if (extensions.wedo) {
+        result += wedo;
     }
-    if (hasWedo) {
-        xml += wedoLabel;
-        xml += wedoGlobal;
+    if (extensions.speech) {
+        result += speech;
     }
-    xml += '</category>';
-    return xml;
+    return result;
 }
-
-function getSpeechExtensionBlocks () {
-    let xml = extensionsCategory;
-    xml += speechLabel;
-    xml += speechLocal;
-    xml += speechGlobal;
-    if (hasWedo) {
-        xml += wedoLabel;
-        xml += wedoGlobal;
-    }
-    xml += '</category>';
-    return xml;
-}
-
-function getWedoExtensionBlocks () {
-    let xml = extensionsCategory;
-    xml += wedoLabel;
-    xml += wedoLocal;
-    xml += wedoGlobal;
-    if (hasSpeech) {
-        xml += speechLabel;
-        xml += speechGlobal;
-    }
-    xml += '</category>';
-    return xml;
-}
-
-const extensionsCategory = '<category name="Extensions" colour="#FF6680" secondaryColour="#FF4D6A">';
 
 const separator = '<sep gap="45"></sep>';
 
-const speechLabel = '<label text="Speech" web-class="extensionLabel"></label>';
+const speech =
+    `${'<category name="Speech" colour="#FF6680" secondaryColour="#FF4D6A">' +
+        '<block type="speech_speak">' +
+          '<value name="STRING">' +
+            '<shadow type="text">' +
+              '<field name="TEXT">hello</field>' +
+            '</shadow>' +
+          '</value>' +
+        '</block>' +
+        '<block type="speech_setvoice">' +
+          '<value name="VOICE">' +
+            '<shadow type="speech_dropdown_voice" />' +
+          '</value>' +
+        '</block>'}
+        ${separator}
+        ${'<block type="speech_whenihear">' +
+          '<value name="STRING">' +
+              '<shadow type="text">' +
+                '<field name="TEXT">scratch</field>' +
+              '</shadow>' +
+            '</value>' +
+        '</block>' +
+        '<block type="speech_getlatestspeech"></block>' +
+    '</category>'}`;
 
-const speechLocal =
-    `${'<block type="speech_speak">' +
-      '<value name="STRING">' +
-        '<shadow type="text">' +
-          '<field name="TEXT">hello</field>' +
-        '</shadow>' +
-      '</value>' +
-    '</block>' +
-    '<block type="speech_setvoice">' +
-      '<value name="VOICE">' +
-        '<shadow type="speech_dropdown_voice" />' +
-      '</value>' +
-    '</block>'}${
-    separator}`;
-
-const speechGlobal =
-    `${'<block type="speech_whenihear">' +
-      '<value name="STRING">' +
-          '<shadow type="text">' +
-            '<field name="TEXT">scratch</field>' +
-          '</shadow>' +
-        '</value>' +
-    '</block>' +
-    '<block type="speech_getlatestspeech"></block>'}${
-    separator}`;
-
-const wedoLabel = '<label text="LEGO WeDo 2.0" web-class="extensionLabel"></label>';
-
-const wedoLocal =
-    `${'<block type="wedo2_motorOnFor">' +
-        '<value name="MOTOR_ID">' +
-            '<shadow type="wedo2_dropdown_motor" />' +
-        '</value>' +
-        '<value name="DURATION">' +
-            '<shadow type="math_positive_number">' +
-                '<field name="NUM">1</field>' +
-            '</shadow>' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_motorOn">' +
-        '<value name="MOTOR_ID">' +
-            '<shadow type="wedo2_dropdown_motor" />' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_motorOff">' +
-        '<value name="MOTOR_ID">' +
-            '<shadow type="wedo2_dropdown_motor" />' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_startMotorPower">' +
-        '<value name="MOTOR_ID">' +
-            '<shadow type="wedo2_dropdown_motor" />' +
-        '</value>' +
-        '<value name="POWER">' +
-            '<shadow type="math_positive_number">' +
-                '<field name="NUM">100</field>' +
-            '</shadow>' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_setMotorDirection">' +
-        '<value name="MOTOR_ID">' +
-            '<shadow type="wedo2_dropdown_motor" />' +
-        '</value>' +
-        '<value name="DIRECTION">' +
-            '<shadow type="wedo2_dropdown_direction" />' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_setLightHue">' +
-        '<value name="HUE">' +
-            '<shadow type="math_number">' +
-                '<field name="NUM">50</field>' +
-            '</shadow>' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_playNoteFor">' +
-        '<value name="NOTE">' +
-            '<shadow type="math_number">' +
-                '<field name="NUM">60</field>' +
-            '</shadow>' +
-        '</value>' +
-        '<value name="DURATION">' +
-            '<shadow type="math_positive_number">' +
-                '<field name="NUM">0.5</field>' +
-            '</shadow>' +
-        '</value>' +
-    '</block>'}${
-    separator}`;
-
-const wedoGlobal =
-    `${'<block type="wedo2_whenDistance">' +
-        '<value name="REFERENCE">' +
-            '<shadow type="math_positive_number">' +
-                '<field name="NUM">50</field>' +
-            '</shadow>' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_whenTilted">' +
-        '<value name="DIRECTION">' +
-            '<shadow type="wedo2_dropdown_tilt" />' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_getDistance"></block>' +
-    '<block type="wedo2_isTilted">' +
-        '<value name="DIRECTION">' +
-            '<shadow type="wedo2_dropdown_tilt" />' +
-        '</value>' +
-    '</block>' +
-    '<block type="wedo2_getTiltAngle">' +
-        '<value name="DIRECTION">' +
-            '<shadow type="wedo2_dropdown_tilt_reporter" />' +
-        '</value>' +
-    '</block>'}${
-    separator}`;
+const wedo =
+    `${'<category name="Lego WeDo" colour="#FF6680" secondaryColour="#FF4D6A">' +
+        '<block type="wedo2_motorOnFor">' +
+            '<value name="MOTOR_ID">' +
+                '<shadow type="wedo2_dropdown_motor" />' +
+            '</value>' +
+            '<value name="DURATION">' +
+                '<shadow type="math_positive_number">' +
+                    '<field name="NUM">1</field>' +
+                '</shadow>' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_motorOn">' +
+            '<value name="MOTOR_ID">' +
+                '<shadow type="wedo2_dropdown_motor" />' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_motorOff">' +
+            '<value name="MOTOR_ID">' +
+                '<shadow type="wedo2_dropdown_motor" />' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_startMotorPower">' +
+            '<value name="MOTOR_ID">' +
+                '<shadow type="wedo2_dropdown_motor" />' +
+            '</value>' +
+            '<value name="POWER">' +
+                '<shadow type="math_positive_number">' +
+                    '<field name="NUM">100</field>' +
+                '</shadow>' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_setMotorDirection">' +
+            '<value name="MOTOR_ID">' +
+                '<shadow type="wedo2_dropdown_motor" />' +
+            '</value>' +
+            '<value name="DIRECTION">' +
+                '<shadow type="wedo2_dropdown_direction" />' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_setLightHue">' +
+            '<value name="HUE">' +
+                '<shadow type="math_number">' +
+                    '<field name="NUM">50</field>' +
+                '</shadow>' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_playNoteFor">' +
+            '<value name="NOTE">' +
+                '<shadow type="math_number">' +
+                    '<field name="NUM">60</field>' +
+                '</shadow>' +
+            '</value>' +
+            '<value name="DURATION">' +
+                '<shadow type="math_positive_number">' +
+                    '<field name="NUM">0.5</field>' +
+                '</shadow>' +
+            '</value>' +
+        '</block>'}
+        ${separator}
+        ${'<block type="wedo2_whenDistance">' +
+            '<value name="REFERENCE">' +
+                '<shadow type="math_positive_number">' +
+                    '<field name="NUM">50</field>' +
+                '</shadow>' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_whenTilted">' +
+            '<value name="DIRECTION">' +
+                '<shadow type="wedo2_dropdown_tilt" />' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_getDistance"></block>' +
+        '<block type="wedo2_isTilted">' +
+            '<value name="DIRECTION">' +
+                '<shadow type="wedo2_dropdown_tilt" />' +
+            '</value>' +
+        '</block>' +
+        '<block type="wedo2_getTiltAngle">' +
+            '<value name="DIRECTION">' +
+                '<shadow type="wedo2_dropdown_tilt_reporter" />' +
+            '</value>' +
+        '</block>' +
+    '</category>'}`;
 
 const motion =
     '<category name="Motion" colour="#4C97FF" secondaryColour="#3373CC">' +
@@ -765,36 +725,8 @@ const data =
     '<category name="Data" colour="#FF8C1A" secondaryColour="#DB6E00" custom="VARIABLE">' +
   '</category>';
 
-const noBlocks = '<label text="No blocks" web-class="extensionLabel"></label>';
-
-const extensionCore =
-    `<category name="Motion" colour="#CCCCCC" secondaryColour="#999999">${
-    noBlocks
-    }</category>` +
-    `<category name="Looks" colour="#CCCCCC" secondaryColour="#999999">${
-    noBlocks
-    }</category>${
-    sound
-    }<category name="Pen" colour="#CCCCCC" secondaryColour="#999999">${
-    noBlocks
-    }</category>${
-    data
-    }${events
-    }${control
-    }${sensing
-    }${operators}`;
-
 const core = motion + looks + sound + pen + data + events + control + sensing + operators;
 
 module.exports = {
-    getSpriteToolbox: () => wrapCategories([core, getGlobalExtensionBlocks()]),
-    getStageToolbox: () => wrapCategories([core, getGlobalExtensionBlocks()]),
-    getSpeechToolbox: () => {
-        hasSpeech = true;
-        return wrapCategories([extensionCore, getSpeechExtensionBlocks()]);
-    },
-    getWedoToolbox: () => {
-        hasWedo = true;
-        return wrapCategories([extensionCore, getWedoExtensionBlocks()]);
-    }
+    getToolbox: (extensions) => wrapCategories([core, getExtensions(extensions)])
 };

@@ -13,10 +13,8 @@ const {
 } = require('../reducers/modals');
 
 const {
-    setSpriteToolbox,
-    setStageToolbox,
-    setSpeechToolbox,
-    setWedoToolbox
+    enableWedo,
+    enableSpeech
 } = require('../reducers/toolbox');
 
 const TargetPaneComponent = require('../components/target-pane/target-pane.jsx');
@@ -36,30 +34,7 @@ class TargetPane extends React.Component {
             'handleSpeechClick',
             'handleWedoClick'
         ]);
-    }
-    componentDidUpdate (prevProps) {
-        if (this.props.editingTarget !== prevProps.editingTarget) {
-            const id = this.props.editingTarget;
-            if (this.props.sprites[id]) {
-                switch (this.props.sprites[id].name) {
-                case 'Speech':
-                    this.props.onSetSpeechToolbox();
-                    this.selectExtensionsCategory();
-                    break;
-                case 'LEGO WeDo':
-                    this.props.onSetWedoToolbox();
-                    this.selectExtensionsCategory();
-                    break;
-                default:
-                    this.props.onSetSpriteToolbox();
-                }
-            } else if (id === this.props.stage.id) {
-                this.props.onSetStageToolbox();
-            } else {
-                // how did we get here?
-                // console.log('for some reason the id does not exist in sprites and is not the stage');
-            }
-        }
+        this.state = {extensions: {}};
     }
     handleChangeSpriteDirection (direction) {
         this.props.vm.postSpriteInfo({direction});
@@ -86,25 +61,10 @@ class TargetPane extends React.Component {
         this.props.vm.setEditingTarget(id);
     }
     handleSpeechClick () {
-        // this.props.vm.addSprite2(JSON.stringify(SpeechExtension.sprite));
-        // this.props.onSetSpeechToolbox();
-        // this.selectExtensionsCategory();
-        this.props.vm.runtime.HACK_SpeechBlocks.startSpeechRecogntion();
+        this.props.onEnableSpeech();
     }
     handleWedoClick () {
-        // this.props.vm.addSprite2(JSON.stringify(WedoExtension.sprite));
-        this.props.vm.runtime.HACK_WeDo2Blocks.connect();
-        // this.props.onSetWedoToolbox();
-        // this.selectExtensionsCategory();
-    }
-
-    selectExtensionsCategory () {
-        const categories = window.workspace.toolbox_.categoryMenu_.categories_;
-        for (let i = 0; i < categories.length; i++) {
-            if (categories[i].name_ === 'Extensions') {
-                window.workspace.toolbox_.setSelectedItem(categories[i]);
-            }
-        }
+        this.props.onEnableWedo();
     }
 
     render () {
@@ -173,19 +133,12 @@ const mapDispatchToProps = dispatch => ({
     onRequestCloseSpriteLibrary: () => {
         dispatch(closeSpriteLibrary());
     },
-    onSetSpriteToolbox: () => {
-        dispatch(setSpriteToolbox());
+    onEnableWedo: () => {
+        dispatch(enableWedo());
     },
-    onSetStageToolbox: () => {
-        dispatch(setStageToolbox());
-    },
-    onSetSpeechToolbox: () => {
-        dispatch(setSpeechToolbox());
-    },
-    onSetWedoToolbox: () => {
-        dispatch(setWedoToolbox());
+    onEnableSpeech: () => {
+        dispatch(enableSpeech());
     }
-
 });
 
 module.exports = connect(
