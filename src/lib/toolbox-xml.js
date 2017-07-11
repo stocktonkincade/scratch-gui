@@ -45,7 +45,7 @@ const speech =
     '</category>'}`;
 
 const wedo =
-    `${'<category name="Lego WeDo" colour="#FF6680" secondaryColour="#FF4D6A">' +
+    `${'<category name="WeDo" colour="#FF6680" secondaryColour="#FF4D6A">' +
         '<block type="wedo2_motorOnFor">' +
             '<value name="MOTOR_ID">' +
                 '<shadow type="wedo2_dropdown_motor" />' +
