@@ -48,7 +48,7 @@ class Blocks extends React.Component {
     }
     componentDidMount () {
         const workspaceConfig = defaultsDeep({
-            toolbox: this.ScratchBlocks.Blocks.defaultToolbox
+            toolbox: getToolbox(this.props.extensions)
         }, Blocks.defaultOptions, this.props.options);
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
         window.workspace = this.workspace;
