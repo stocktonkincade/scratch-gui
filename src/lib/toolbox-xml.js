@@ -725,7 +725,7 @@ const data =
     '<category name="Data" colour="#FF8C1A" secondaryColour="#DB6E00" custom="VARIABLE">' +
   '</category>';
 
-const core = motion + looks + sound + pen + data + events + control + sensing + operators;
+const core = motion + looks + sound + events + control + sensing + pen + operators + data;
 
 module.exports = {
     getToolbox: (extensions) => wrapCategories([core, getExtensions(extensions)])
