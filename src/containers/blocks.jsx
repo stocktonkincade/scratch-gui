@@ -72,7 +72,7 @@ class Blocks extends React.Component {
             }
             if (!prevProps.extensions.wedo && this.props.extensions.wedo) {
                 this.workspace.updateToolbox(getToolbox(this.props.extensions));
-                this.setToolboxSelectedItemByName('Lego WeDo');
+                this.setToolboxSelectedItemByName('WeDo');
                 this.props.vm.runtime.HACK_WeDo2Blocks.connect();
             }
         }
