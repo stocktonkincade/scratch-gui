@@ -28,10 +28,11 @@ $border-style: 1px solid $ui-pane-border;
     box-sizing: content-box;
 }
 
-.blocks :global(.extensionLabel>.blocklyFlyoutLabelText ) {
+.blocks :global(.categoryLabel>.blocklyFlyoutLabelText ) {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14pt;
     fill: #575E75;
     transform: translate(-40px, 0px);
+    font-weight: bold;
 }
 

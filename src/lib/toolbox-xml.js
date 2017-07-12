@@ -21,6 +21,7 @@ const separator = '<sep gap="45"></sep>';
 
 const speech =
     `${'<category name="Speech" colour="#FF6680" secondaryColour="#FF4D6A">' +
+        '<label text="Speech" web-class="categoryLabel"></label>' +
         '<block type="speech_speak">' +
           '<value name="STRING">' +
             '<shadow type="text">' +
@@ -46,6 +47,7 @@ const speech =
 
 const wedo =
     `${'<category name="WeDo" colour="#FF6680" secondaryColour="#FF4D6A">' +
+        '<label text="WeDo" web-class="categoryLabel"></label>' +
         '<block type="wedo2_motorOnFor">' +
             '<value name="MOTOR_ID">' +
                 '<shadow type="wedo2_dropdown_motor" />' +
@@ -131,6 +133,7 @@ const wedo =
 
 const motion =
     '<category name="Motion" colour="#4C97FF" secondaryColour="#3373CC">' +
+    '<label text="Motion" web-class="categoryLabel"></label>' +
     '<block type="motion_movesteps">' +
       '<value name="STEPS">' +
         '<shadow type="math_number">' +
@@ -237,6 +240,7 @@ const motion =
 
 const looks =
   '<category name="Looks" colour="#9966FF" secondaryColour="#774DCB">' +
+    '<label text="Looks" web-class="categoryLabel"></label>' +
     '<block type="looks_show"></block>' +
     '<block type="looks_hide"></block>' +
     '<block type="looks_switchcostumeto">' +
@@ -301,6 +305,7 @@ const looks =
 
 const sound =
   '<category name="Sound" colour="#D65CD6" secondaryColour="#BD42BD">' +
+    '<label text="Sound" web-class="categoryLabel"></label>' +
     '<block type="sound_play">' +
       '<value name="SOUND_MENU">' +
         '<shadow type="sound_sounds_menu"></shadow>' +
@@ -395,6 +400,7 @@ const sound =
 
 const pen =
   '<category name="Pen" colour="#00B295" secondaryColour="#0B8E69">' +
+    '<label text="Pen" web-class="categoryLabel"></label>' +
     '<block type="pen_clear"></block>' +
     '<block type="pen_stamp"></block>' +
     '<block type="pen_pendown"></block>' +
@@ -451,6 +457,7 @@ const pen =
 
 const events =
   '<category name="Events" colour="#FFD500" secondaryColour="#CC9900">' +
+    '<label text="Events" web-class="categoryLabel"></label>' +
     '<block type="event_whenflagclicked"></block>' +
     '<block type="event_whenkeypressed">' +
     '</block>' +
@@ -480,6 +487,7 @@ const events =
 
 const control =
   '<category name="Control" colour="#FFAB19" secondaryColour="#CF8B17">' +
+    '<label text="Control" web-class="categoryLabel"></label>' +
     '<block type="control_wait">' +
       '<value name="DURATION">' +
         '<shadow type="math_positive_number">' +
@@ -511,6 +519,7 @@ const control =
 
 const sensing =
   '<category name="Sensing" colour="#4CBFE6" secondaryColour="#2E8EB8">' +
+    '<label text="Sensing" web-class="categoryLabel"></label>' +
     '<block type="sensing_touchingobject">' +
       '<value name="TOUCHINGOBJECTMENU">' +
         '<shadow type="sensing_touchingobjectmenu"></shadow>' +
@@ -563,6 +572,7 @@ const sensing =
 
 const operators =
   '<category name="Operators" colour="#40BF4A" secondaryColour="#389438">' +
+    '<label text="Operators" web-class="categoryLabel"></label>' +
     '<block type="operator_add">' +
       '<value name="NUM1">' +
         '<shadow type="math_number">' +
@@ -723,6 +733,7 @@ const operators =
 
 const data =
     '<category name="Data" colour="#FF8C1A" secondaryColour="#DB6E00" custom="VARIABLE">' +
+        '<label text="Data" web-class="categoryLabel"></label>' +
   '</category>';
 
 const core = motion + looks + sound + events + control + sensing + pen + operators + data;
