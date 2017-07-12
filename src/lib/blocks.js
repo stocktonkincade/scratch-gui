@@ -37,7 +37,7 @@ module.exports = function (vm) {
     };
 
     const soundsMenu = function () {
-        const sounds = vm.editingTarget.sprite.sounds;
+        const sounds = vm.editingTarget ? vm.editingTarget.sprite.sounds : [];
         if (sounds.length === 0) {
             return [['', '']];
         }
@@ -45,11 +45,19 @@ module.exports = function (vm) {
     };
 
     const costumesMenu = function () {
-        return vm.editingTarget.sprite.costumes.map(costume => [costume.name, costume.name]);
+        const costumes = vm.editingTarget ? vm.editingTarget.sprite.costumes : [];
+        if (costumes.length === 0) {
+            return [['', '']];
+        }
+        return costumes.map(costume => [costume.name, costume.name]);
     };
 
     const backdropsMenu = function () {
-        return vm.runtime.targets[0].sprite.costumes.map(costume => [costume.name, costume.name]);
+        const costumes = vm.runtime.targets[0] ? vm.runtime.targets[0].sprite.costumes : [];
+        if (costumes.length === 0) {
+            return [['', '']];
+        }
+        return costumes.map(costume => [costume.name, costume.name]);
     };
 
     const spriteMenu = function () {
