@@ -1,7 +1,7 @@
-const bindAll = require('lodash.bindall');
-const React = require('react');
+import bindAll from 'lodash.bindall';
+import React from 'react';
 
-const {connect} = require('react-redux');
+import {connect} from 'react-redux';
 
 const {
     openBackdropLibrary,
