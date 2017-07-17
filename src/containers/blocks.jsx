@@ -185,6 +185,8 @@ class Blocks extends React.Component {
         this.ScratchBlocks.Xml.domToWorkspace(dom, this.workspace);
         this.ScratchBlocks.Events.enable();
 
+        this.workspace.toolbox_.refreshSelection();
+
         if (this.props.vm.editingTarget && this.state.workspaceMetrics[this.props.vm.editingTarget.id]) {
             const {scrollX, scrollY, scale} = this.state.workspaceMetrics[this.props.vm.editingTarget.id];
             this.workspace.scrollX = scrollX;
