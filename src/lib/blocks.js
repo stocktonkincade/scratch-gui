@@ -88,6 +88,13 @@ module.exports = function (vm) {
 
     const extensionsColors = ScratchBlocks.Colours.extensions;
 
+    const speechIcon = {
+        type: 'field_image',
+        src: './static/blocks-media/extension-icons/speech.svg',
+        width: 24,
+        height: 24
+    };
+
     ScratchBlocks.Blocks.speech_whenihear = {
       /**
        * Block to start a stack when speech recognition detects a string.
@@ -96,8 +103,9 @@ module.exports = function (vm) {
         init: function () {
             this.jsonInit({
                 id: 'speech_whenihear',
-                message0: 'when I hear %1',
+                message0: '%1 when I hear %2',
                 args0: [
+                    speechIcon,
                     {
                         type: 'input_value',
                         name: 'STRING'
@@ -120,8 +128,9 @@ module.exports = function (vm) {
         */
         init: function () {
             this.jsonInit({
-                message0: 'speak %1',
+                message0: '%1 speak %2',
                 args0: [
+                    speechIcon,
                     {
                         type: 'input_value',
                         name: 'STRING'
@@ -144,8 +153,9 @@ module.exports = function (vm) {
         */
         init: function () {
             this.jsonInit({
-                message0: 'set voice to %1',
+                message0: '%1 set voice to %2',
                 args0: [
+                    speechIcon,
                     {
                         type: 'input_value',
                         name: 'VOICE'
@@ -164,8 +174,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.speech_dropdown_voice = {
         init: function () {
             this.jsonInit({
-                message0: '%1',
+                message0: '%1 %2',
                 args0: [
+                    speechIcon,
                     {
                         type: 'field_dropdown',
                         name: 'VOICE',
@@ -191,7 +202,8 @@ module.exports = function (vm) {
         */
         init: function () {
             this.jsonInit({
-                message0: 'speech',
+                message0: '%1 speech',
+                args0: [speechIcon],
                 output: 'String',
                 outputShape: ScratchBlocks.OUTPUT_SHAPE_ROUND,
                 checkboxInFlyout: true,
@@ -201,6 +213,13 @@ module.exports = function (vm) {
                 colourTertiary: ScratchBlocks.Colours.extensions.tertiary
             });
         }
+    };
+
+    const wedoIcon = {
+        type: 'field_image',
+        src: './static/blocks-media/extension-icons/wedo.svg',
+        width: 24,
+        height: 24
     };
 
     ScratchBlocks.Blocks.wedo2_dropdown_motor = {
@@ -232,8 +251,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_motorOnFor = {
         init: function () {
             this.jsonInit({
-                message0: 'turn %1 on for %2 secs',
+                message0: '%1 turn %2 on for %3 secs',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'MOTOR_ID'
@@ -256,8 +276,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_motorOn = {
         init: function () {
             this.jsonInit({
-                message0: 'turn %1 on',
+                message0: '%1 turn %2 on',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'MOTOR_ID'
@@ -276,8 +297,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_motorOff = {
         init: function () {
             this.jsonInit({
-                message0: 'turn %1 off',
+                message0: '%1 turn %2 off',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'MOTOR_ID'
@@ -296,8 +318,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_startMotorPower = {
         init: function () {
             this.jsonInit({
-                message0: 'set %1 power to %2',
+                message0: '%1 set %2 power to %3',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'MOTOR_ID'
@@ -345,8 +368,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_setMotorDirection = {
         init: function () {
             this.jsonInit({
-                message0: 'set %1 direction to %2',
+                message0: '%1 set %2 direction to %3',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'MOTOR_ID'
@@ -369,8 +393,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_setLightHue = {
         init: function () {
             this.jsonInit({
-                message0: 'set light color to %1',
+                message0: '%1 set light color to %2',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'HUE'
@@ -389,8 +414,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_playNoteFor = {
         init: function () {
             this.jsonInit({
-                message0: 'play note %1 for %2 seconds',
+                message0: '%1 play note %2 for %3 seconds',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'NOTE'
@@ -438,8 +464,9 @@ module.exports = function (vm) {
         init: function () {
             this.jsonInit({
                 id: 'wedo2_whendistance',
-                message0: 'when distance %1 %2',
+                message0: '%1 when distance %2 %3',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'field_dropdown',
                         name: 'OP',
@@ -520,8 +547,9 @@ module.exports = function (vm) {
         init: function () {
             this.jsonInit({
                 id: 'wedo2_whentilted',
-                message0: 'when tilted %1',
+                message0: '%1 when tilted %2',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'DIRECTION'
@@ -540,7 +568,8 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_getDistance = {
         init: function () {
             this.jsonInit({
-                message0: 'distance',
+                message0: '%1 distance',
+                args0: [wedoIcon],
                 output: 'Number',
                 outputShape: ScratchBlocks.OUTPUT_SHAPE_ROUND,
                 checkboxInFlyout: true,
@@ -555,8 +584,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_isTilted = {
         init: function () {
             this.jsonInit({
-                message0: 'tilted %1?',
+                message0: '%1 tilted %2?',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'DIRECTION'
@@ -576,8 +606,9 @@ module.exports = function (vm) {
     ScratchBlocks.Blocks.wedo2_getTiltAngle = {
         init: function () {
             this.jsonInit({
-                message0: 'tilt angle %1',
+                message0: '%1 tilt angle %2',
                 args0: [
+                    wedoIcon,
                     {
                         type: 'input_value',
                         name: 'DIRECTION'
