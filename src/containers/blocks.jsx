@@ -185,7 +185,7 @@ class Blocks extends React.Component {
         this.ScratchBlocks.Xml.domToWorkspace(dom, this.workspace);
         this.ScratchBlocks.Events.enable();
 
-        this.workspace.toolbox_.refreshSelection();
+        this.updateBlockMenus();
 
         if (this.props.vm.editingTarget && this.state.workspaceMetrics[this.props.vm.editingTarget.id]) {
             const {scrollX, scrollY, scale} = this.state.workspaceMetrics[this.props.vm.editingTarget.id];
@@ -194,6 +194,43 @@ class Blocks extends React.Component {
             this.workspace.scale = scale;
             this.workspace.resize();
         }
+    }
+    updateBlockMenus () {
+        const target = this.props.vm.editingTarget;
+        if (!target) return;
+        // sound menus
+        let firstSound = '';
+        if (target.sprite.sounds.length > 0) {
+            firstSound = target.sprite.sounds[0].name;
+        }
+        this.setBlockFieldValue('sound_play_menu', 'SOUND_MENU', firstSound);
+        this.setBlockFieldValue('sound_play_done_menu', 'SOUND_MENU', firstSound);
+        // costume menu
+        let firstCostume = '';
+        if (target.sprite.costumes.length > 0) {
+            firstCostume = target.sprite.costumes[0].name;
+        }
+        this.setBlockFieldValue('looks_costume', 'COSTUME', firstCostume);
+        // backdrops menu
+        let firstBackdrop = '';
+        const stage = this.props.vm.runtime.targets[0];
+        if (stage && stage.sprite.costumes.length > 0) {
+            firstBackdrop = stage.sprite.costumes[0].name;
+        }
+        this.setBlockFieldValue('looks_backdrops', 'BACKDROP', firstBackdrop);
+        this.setBlockFieldValue('looks_backdrops_wait', 'BACKDROP', firstBackdrop);
+    }
+    setBlockFieldValue (id, fieldName, value) {
+        const block = this.getBlockById(id);
+        if (block) {
+            block.setFieldValue(value, fieldName);
+        }
+    }
+    getBlockById (id) {
+        return this.workspace
+            .getFlyout()
+            .getWorkspace()
+            .getBlockById(id);
     }
     setBlocks (blocks) {
         this.blocks = blocks;

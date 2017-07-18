@@ -245,19 +245,19 @@ const looks =
     '<block type="looks_hide"></block>' +
     '<block type="looks_switchcostumeto">' +
       '<value name="COSTUME">' +
-        '<shadow type="looks_costume"></shadow>' +
+        '<shadow id="looks_costume" type="looks_costume"></shadow>' +
       '</value>' +
     '</block>' +
     '<block type="looks_nextcostume"></block>' +
     '<block type="looks_nextbackdrop"></block>' +
     '<block type="looks_switchbackdropto">' +
       '<value name="BACKDROP">' +
-        '<shadow type="looks_backdrops"></shadow>' +
+        '<shadow id="looks_backdrops" type="looks_backdrops"></shadow>' +
       '</value>' +
     '</block>' +
     '<block type="looks_switchbackdroptoandwait">' +
       '<value name="BACKDROP">' +
-        '<shadow type="looks_backdrops"></shadow>' +
+        '<shadow id="looks_backdrops_wait" type="looks_backdrops"></shadow>' +
       '</value>' +
     '</block>' +
     '<block type="looks_changeeffectby">' +
@@ -306,14 +306,14 @@ const looks =
 const sound =
   '<category name="Sound" colour="#D65CD6" secondaryColour="#BD42BD">' +
     '<label text="Sound" web-class="categoryLabel"></label>' +
-    '<block type="sound_play">' +
+    '<block id="sound_play" type="sound_play">' +
       '<value name="SOUND_MENU">' +
-        '<shadow type="sound_sounds_menu"></shadow>' +
+        '<shadow id="sound_play_menu" type="sound_sounds_menu"></shadow>' +
       '</value>' +
     '</block>' +
     '<block type="sound_playuntildone">' +
       '<value name="SOUND_MENU">' +
-        '<shadow type="sound_sounds_menu"></shadow>' +
+        '<shadow id="sound_play_done_menu" type="sound_sounds_menu"></shadow>' +
       '</value>' +
     '</block>' +
     '<block type="sound_stopallsounds"></block>' +
