@@ -4,7 +4,7 @@ import modalReducer from './modals';
 import monitorReducer from './monitors';
 import targetReducer from './targets';
 import vmReducer from './vm';
-import toolboxReducer from '/toolbox';
+import toolboxReducer from './toolbox';
 
 
 module.exports = combineReducers({
