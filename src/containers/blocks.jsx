@@ -69,6 +69,8 @@ class Blocks extends React.Component {
                 this.workspace.updateToolbox(getToolbox(this.props.extensions));
                 this.setToolboxSelectedItemByName('Speech');
                 this.props.vm.runtime.HACK_SpeechBlocks.startSpeechRecogntion();
+
+                this.props.vm.runtime.HACK_PhysicsBlocks.start();
             }
             if (!prevProps.extensions.wedo && this.props.extensions.wedo) {
                 this.workspace.updateToolbox(getToolbox(this.props.extensions));
