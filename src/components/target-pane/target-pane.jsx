@@ -17,6 +17,7 @@ import addIcon from './icon--add.svg';
 
 const addSpeechIcon = require('./icon--add-speech.svg');
 const addWedoIcon = require('./icon--add-wedo.svg');
+const addPhysicsIcon = require('./icon--add-physics.svg');
 
 /*
  * Pane that contains the sprite selector, sprite info, stage selector,
@@ -41,6 +42,7 @@ const TargetPane = ({
     onNewBackdropClick,
     onNewSpeechClick,
     onNewWedoClick,
+    onNewPhysicsClick,
     onRequestCloseBackdropLibrary,
     onRequestCloseCostumeLibrary,
     onRequestCloseSoundLibrary,
@@ -122,6 +124,17 @@ const TargetPane = ({
                         src={addWedoIcon}
                     />
                 </button>
+
+                <button
+                    className={classNames(styles.addButtonWrapper, styles.addButtonWrapperPhysics)}
+                    onClick={onNewPhysicsClick}
+                >
+                    <img
+                        className={styles.extensionbutton}
+                        src={addPhysicsIcon}
+                    />
+                </button>
+
                 <SpriteLibrary
                     visible={spriteLibraryVisible}
                     vm={vm}
@@ -177,6 +190,7 @@ TargetPane.propTypes = {
     onChangeSpriteY: PropTypes.func,
     onDeleteSprite: PropTypes.func,
     onNewBackdropClick: PropTypes.func,
+    onNewPhysicsClick: PropTypes.func,
     onNewSpeechClick: PropTypes.func,
     onNewSpriteClick: PropTypes.func,
     onNewWedoClick: PropTypes.func,

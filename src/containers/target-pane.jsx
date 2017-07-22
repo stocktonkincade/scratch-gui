@@ -14,7 +14,8 @@ const {
 
 const {
     enableWedo,
-    enableSpeech
+    enableSpeech,
+    enablePhysics
 } = require('../reducers/toolbox');
 
 const TargetPaneComponent = require('../components/target-pane/target-pane.jsx');
@@ -32,7 +33,8 @@ class TargetPane extends React.Component {
             'handleDeleteSprite',
             'handleSelectSprite',
             'handleSpeechClick',
-            'handleWedoClick'
+            'handleWedoClick',
+            'handlePhysicsClick'
         ]);
         this.state = {extensions: {}};
     }
@@ -66,6 +68,9 @@ class TargetPane extends React.Component {
     handleWedoClick () {
         this.props.onEnableWedo();
     }
+    handlePhysicsClick () {
+        this.props.onEnablePhysics();
+    }
 
     render () {
         return (
@@ -78,6 +83,7 @@ class TargetPane extends React.Component {
                 onChangeSpriteX={this.handleChangeSpriteX}
                 onChangeSpriteY={this.handleChangeSpriteY}
                 onDeleteSprite={this.handleDeleteSprite}
+                onNewPhysicsClick={this.handlePhysicsClick}
                 onNewSpeechClick={this.handleSpeechClick}
                 onNewWedoClick={this.handleWedoClick}
                 onSelectSprite={this.handleSelectSprite}
@@ -138,6 +144,9 @@ const mapDispatchToProps = dispatch => ({
     },
     onEnableSpeech: () => {
         dispatch(enableSpeech());
+    },
+    onEnablePhysics: () => {
+        dispatch(enablePhysics());
     }
 });
 

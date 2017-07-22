@@ -2,7 +2,8 @@ const UPDATE_EXTENSIONS = 'scratch-gui/toolbox/UPDATE_EXTENSIONS';
 
 const initialState = {
     wedo: false,
-    speech: false
+    speech: false,
+    physics: false
 };
 
 const reducer = function (state, action) {
@@ -28,6 +29,10 @@ reducer.enableWedo = function () {
 
 reducer.enableSpeech = function () {
     return reducer.updateExtensions({speech: true});
+};
+
+reducer.enablePhysics = function () {
+    return reducer.updateExtensions({physics: true});
 };
 
 module.exports = reducer;
