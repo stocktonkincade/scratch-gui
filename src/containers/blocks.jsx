@@ -76,6 +76,8 @@ class Blocks extends React.Component {
                 this.props.vm.runtime.HACK_WeDo2Blocks.connect();
             }
             if (!prevProps.extensions.physics && this.props.extensions.physics) {
+                this.workspace.updateToolbox(getToolbox(this.props.extensions));
+                this.setToolboxSelectedItemByName('Physics');
                 this.props.vm.runtime.HACK_PhysicsBlocks.start();
             }
         }
@@ -278,7 +280,8 @@ class Blocks extends React.Component {
 Blocks.propTypes = {
     extensions: PropTypes.shape({
         wedo: PropTypes.bool,
-        speech: PropTypes.bool
+        speech: PropTypes.bool,
+        physics: PropTypes.bool
     }),
     isVisible: PropTypes.boolean,
     options: PropTypes.shape({

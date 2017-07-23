@@ -625,6 +625,79 @@ module.exports = function (vm) {
         }
     };
 
+    const physicsIcon = {
+        type: 'field_image',
+        src: './static/blocks-media/extension-icons/physics.svg',
+        width: 24,
+        height: 24
+    };
+
+    ScratchBlocks.Blocks.physics_pushXY = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_pushXY',
+                message0: '%1 push x:%2 y:%3',
+                args0: [
+                    physicsIcon,
+                    {
+                        type: 'input_value',
+                        name: 'X'
+                    },
+                    {
+                        type: 'input_value',
+                        name: 'Y'
+                    }
+                ],
+                previousStatement: null,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
+    ScratchBlocks.Blocks.physics_setGravity = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_pushXY',
+                message0: '%1 set gravity to %2%',
+                args0: [
+                    physicsIcon,
+                    {
+                        type: 'input_value',
+                        name: 'GRAVITY'
+                    }
+                ],
+                previousStatement: null,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
+    ScratchBlocks.Blocks.physics_whenCollide = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_whenCollide',
+                message0: '%1 when I collide',
+                args0: [
+                    physicsIcon
+                ],
+                inputsInline: true,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
     ScratchBlocks.Blocks.sound_sounds_menu.init = function () {
         const json = jsonForMenuBlock('SOUND_MENU', soundsMenu, soundColors, []);
         this.jsonInit(json);

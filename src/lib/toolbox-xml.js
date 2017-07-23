@@ -14,10 +14,39 @@ function getExtensions (extensions) {
     if (extensions.speech) {
         result += speech;
     }
+    if (extensions.physics) {
+      result += physics;
+    }
     return result;
 }
 
 const separator = '<sep gap="45"></sep>';
+
+const physics =
+ `${'<category name="Physics" colour="#FF6680" secondaryColour="#FF4D6A">' +
+        '<label text="Physics" web-class="categoryLabel"></label>' +
+        '<block type="physics_whenCollide">' +
+        '</block>' +
+        '<block type="physics_pushXY">' +
+          '<value name="X">' +
+            '<shadow type="math_number">' +
+              '<field name="NUM">10</field>' +
+            '</shadow>' +
+          '</value>' +
+          '<value name="Y">' +
+            '<shadow type="math_number">' +
+              '<field name="NUM">10</field>' +
+            '</shadow>' +
+          '</value>' +
+        '</block>' +
+        '<block type="physics_setGravity">' +
+          '<value name="GRAVITY">' +
+            '<shadow type="math_number">' +
+              '<field name="NUM">0</field>' +
+            '</shadow>' +
+          '</value>' +
+        '</block>' +
+    '</category>'}`;
 
 const speech =
     `${'<category name="Speech" colour="#FF6680" secondaryColour="#FF4D6A">' +
