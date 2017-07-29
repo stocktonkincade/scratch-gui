@@ -658,6 +658,28 @@ module.exports = function (vm) {
         }
     };
 
+    ScratchBlocks.Blocks.physics_push = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_pushXY',
+                message0: '%1 push %2',
+                args0: [
+                    physicsIcon,
+                    {
+                        type: 'input_value',
+                        name: 'FORCE'
+                    }
+                ],
+                previousStatement: null,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
     ScratchBlocks.Blocks.physics_setGravity = {
         init: function () {
             this.jsonInit({
