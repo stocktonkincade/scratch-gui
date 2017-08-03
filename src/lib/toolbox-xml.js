@@ -46,6 +46,13 @@ const physics =
             '</shadow>' +
           '</value>' +
         '</block>' +
+        '<block type="physics_twist">' +
+          '<value name="FORCE">' +
+            '<shadow type="math_number">' +
+              '<field name="NUM">10</field>' +
+            '</shadow>' +
+          '</value>' +
+        '</block>' +
         '<block type="physics_setGravity">' +
           '<value name="GRAVITY">' +
             '<shadow type="math_number">' +
