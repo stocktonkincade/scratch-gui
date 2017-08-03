@@ -708,6 +708,22 @@ module.exports = function (vm) {
         }
     };
 
+    ScratchBlocks.Blocks.physics_speed = {
+        init: function () {
+            this.jsonInit({
+                message0: '%1 speed',
+                args0: [physicsIcon],
+                output: 'Number',
+                outputShape: ScratchBlocks.OUTPUT_SHAPE_ROUND,
+                checkboxInFlyout: true,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
     ScratchBlocks.Blocks.physics_setGravity = {
         init: function () {
             this.jsonInit({

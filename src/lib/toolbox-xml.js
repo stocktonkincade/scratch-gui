@@ -53,6 +53,7 @@ const physics =
             '</shadow>' +
           '</value>' +
         '</block>' +
+        '<block type="physics_speed"></block>' +
         '<block type="physics_setGravity">' +
           '<value name="GRAVITY">' +
             '<shadow type="math_number">' +
