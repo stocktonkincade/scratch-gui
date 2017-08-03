@@ -684,9 +684,15 @@ module.exports = function (vm) {
         init: function () {
             this.jsonInit({
                 id: 'physics_twist',
-                message0: '%1 twist %2',
+                message0: '%1 twist %2 %3',
                 args0: [
                     physicsIcon,
+                    {
+                      "type": "field_image",
+                      "src": './static/blocks-media/turnright_arrow.png',
+                      "width": 16,
+                      "height": 16
+                    },
                     {
                         type: 'input_value',
                         name: 'FORCE'
