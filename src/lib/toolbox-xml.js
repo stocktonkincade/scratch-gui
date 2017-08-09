@@ -61,6 +61,7 @@ const physics =
             '</shadow>' +
           '</value>' +
         '</block>' +
+        '<block type="physics_toggleDebug"></block>' +
     '</category>'}`;
 
 const speech =

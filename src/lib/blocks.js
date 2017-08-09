@@ -764,6 +764,25 @@ module.exports = function (vm) {
         }
     };
 
+
+    ScratchBlocks.Blocks.physics_toggleDebug = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_toggleDebug',
+                message0: '%1 toggle debug renderer',
+                args0: [
+                    physicsIcon
+                ],
+                previousStatement: null,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
     ScratchBlocks.Blocks.sound_sounds_menu.init = function () {
         const json = jsonForMenuBlock('SOUND_MENU', soundsMenu, soundColors, []);
         this.jsonInit(json);
