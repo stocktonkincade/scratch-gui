@@ -764,12 +764,29 @@ module.exports = function (vm) {
         }
     };
 
-
-    ScratchBlocks.Blocks.physics_toggleDebug = {
+    ScratchBlocks.Blocks.physics_lockToStage = {
         init: function () {
             this.jsonInit({
-                id: 'physics_toggleDebug',
-                message0: '%1 toggle debug renderer',
+                id: 'physics_lockToStage',
+                message0: '%1 lock to stage',
+                args0: [
+                    physicsIcon
+                ],
+                previousStatement: null,
+                nextStatement: null,
+                category: ScratchBlocks.Categories.extensions,
+                colour: ScratchBlocks.Colours.extensions.primary,
+                colourSecondary: ScratchBlocks.Colours.extensions.secondary,
+                colourTertiary: ScratchBlocks.Colours.extensions.tertiary
+            });
+        }
+    };
+
+    ScratchBlocks.Blocks.physics_hingeToStage = {
+        init: function () {
+            this.jsonInit({
+                id: 'physics_hingeToStage',
+                message0: '%1 hinge to stage',
                 args0: [
                     physicsIcon
                 ],

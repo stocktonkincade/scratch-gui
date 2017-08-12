@@ -53,6 +53,8 @@ const physics =
             '</shadow>' +
           '</value>' +
         '</block>' +
+        '<block type="physics_lockToStage"></block>' +
+        '<block type="physics_hingeToStage"></block>' +
         '<block type="physics_speed"></block>' +
         '<block type="physics_setGravity">' +
           '<value name="GRAVITY">' +
@@ -61,7 +63,6 @@ const physics =
             '</shadow>' +
           '</value>' +
         '</block>' +
-        '<block type="physics_toggleDebug"></block>' +
     '</category>'}`;
 
 const speech =
