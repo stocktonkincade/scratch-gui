@@ -1,12 +1,12 @@
 [
     {
-        "name": "Some Blocks",
-        "extensionURL": "static/extensions/example-extension.js",
+        "name": "Pen",
+        "extensionURL": "pen",
         "md5": "76f99773dd4eb59f86cd11bba6ad3cb9.svg"
     },
     {
-        "name": "Pen",
-        "extensionURL": "",
+        "name": "Lego WeDo 2.0",
+        "extensionURL": "wedo2",
         "md5": "76f99773dd4eb59f86cd11bba6ad3cb9.svg"
     }
 ]
