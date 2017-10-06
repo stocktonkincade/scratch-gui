@@ -8,5 +8,10 @@
         "name": "Lego WeDo 2.0",
         "extensionURL": "wedo2",
         "md5": "76f99773dd4eb59f86cd11bba6ad3cb9.svg"
+    },
+    {
+        "name": "Pitch",
+        "extensionURL": "pitch",
+        "md5": "76f99773dd4eb59f86cd11bba6ad3cb9.svg"
     }
 ]
