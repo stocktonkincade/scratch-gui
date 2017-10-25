@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 201:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,23 +10,23 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(24);
+var _reactDom = __webpack_require__(31);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _appStateHoc = __webpack_require__(52);
+var _appStateHoc = __webpack_require__(73);
 
 var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
 
-var _gui = __webpack_require__(72);
+var _gui = __webpack_require__(85);
 
 var _gui2 = _interopRequireDefault(_gui);
 
-var _projectLoaderHoc = __webpack_require__(79);
+var _projectLoaderHoc = __webpack_require__(92);
 
 var _projectLoaderHoc2 = _interopRequireDefault(_projectLoaderHoc);
 
-var _index = __webpack_require__(573);
+var _index = __webpack_require__(586);
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -42,21 +42,21 @@ _reactDom2.default.render(_react2.default.createElement(App, null), appTarget);
 
 /***/ }),
 
-/***/ 573:
+/***/ 586:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(574);
+var content = __webpack_require__(587);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
 
-var options = {"hmr":true}
+var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(3)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -74,10 +74,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 574:
+/***/ 587:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(2)(undefined);
 // imports
 
 
@@ -91,5 +91,5 @@ exports.locals = {
 
 /***/ })
 
-},[201]);
+},[286]);
 //# sourceMappingURL=gui.js.map

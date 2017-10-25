@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 575:
+/***/ 588:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,33 +10,33 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(24);
+var _reactDom = __webpack_require__(31);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = __webpack_require__(11);
+var _reactRedux = __webpack_require__(12);
 
-var _appStateHoc = __webpack_require__(52);
+var _appStateHoc = __webpack_require__(73);
 
 var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
 
-var _controls = __webpack_require__(76);
+var _controls = __webpack_require__(89);
 
 var _controls2 = _interopRequireDefault(_controls);
 
-var _blocks = __webpack_require__(151);
+var _blocks = __webpack_require__(162);
 
 var _blocks2 = _interopRequireDefault(_blocks);
 
-var _gui = __webpack_require__(72);
+var _gui = __webpack_require__(85);
 
 var _gui2 = _interopRequireDefault(_gui);
 
-var _projectLoaderHoc = __webpack_require__(79);
+var _projectLoaderHoc = __webpack_require__(92);
 
 var _projectLoaderHoc2 = _interopRequireDefault(_projectLoaderHoc);
 
-var _blocksOnly = __webpack_require__(576);
+var _blocksOnly = __webpack_require__(589);
 
 var _blocksOnly2 = _interopRequireDefault(_blocksOnly);
 
@@ -72,21 +72,21 @@ _reactDom2.default.render(_react2.default.createElement(App, null), appTarget);
 
 /***/ }),
 
-/***/ 576:
+/***/ 589:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(577);
+var content = __webpack_require__(590);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
 
-var options = {"hmr":true}
+var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, options);
+var update = __webpack_require__(3)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -104,10 +104,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 577:
+/***/ 590:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)(undefined);
+exports = module.exports = __webpack_require__(2)(undefined);
 // imports
 
 
@@ -121,5 +121,5 @@ exports.locals = {
 
 /***/ })
 
-},[575]);
+},[588]);
 //# sourceMappingURL=blocksonly.js.map

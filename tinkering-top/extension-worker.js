@@ -70,7 +70,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var microee = __webpack_require__(18);
+var microee = __webpack_require__(9);
 
 // Implements a subset of Node's stream.Transform - in a cross-platform manner.
 function Transform() {}
@@ -151,7 +151,7 @@ module.exports = Transform;
 "use strict";
 
 
-var minilog = __webpack_require__(15);
+var minilog = __webpack_require__(16);
 minilog.enable();
 
 module.exports = minilog('vm');
@@ -797,6 +797,62 @@ global.Scratch.extensions = {
 
 /***/ }),
 /* 9 */
+/***/ (function(module, exports) {
+
+function M() { this._events = {}; }
+M.prototype = {
+  on: function(ev, cb) {
+    this._events || (this._events = {});
+    var e = this._events;
+    (e[ev] || (e[ev] = [])).push(cb);
+    return this;
+  },
+  removeListener: function(ev, cb) {
+    var e = this._events[ev] || [], i;
+    for(i = e.length-1; i >= 0 && e[i]; i--){
+      if(e[i] === cb || e[i].cb === cb) { e.splice(i, 1); }
+    }
+  },
+  removeAllListeners: function(ev) {
+    if(!ev) { this._events = {}; }
+    else { this._events[ev] && (this._events[ev] = []); }
+  },
+  listeners: function(ev) {
+    return (this._events ? this._events[ev] || [] : []);
+  },
+  emit: function(ev) {
+    this._events || (this._events = {});
+    var args = Array.prototype.slice.call(arguments, 1), i, e = this._events[ev] || [];
+    for(i = e.length-1; i >= 0 && e[i]; i--){
+      e[i].apply(this, args);
+    }
+    return this;
+  },
+  when: function(ev, cb) {
+    return this.once(ev, cb, true);
+  },
+  once: function(ev, cb, when) {
+    if(!cb) return this;
+    function c() {
+      if(!when) this.removeListener(ev, c);
+      if(cb.apply(this, arguments) && when) this.removeListener(ev, c);
+    }
+    c.cb = cb;
+    this.on(ev, c);
+    return this;
+  }
+};
+M.mixin = function(dest) {
+  var o = M.prototype, k;
+  for (k in o) {
+    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
+  }
+};
+module.exports = M;
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // default filter
@@ -858,11 +914,11 @@ module.exports = Filter;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0),
-    Filter = __webpack_require__(9);
+    Filter = __webpack_require__(10);
 
 var log = new Transform(),
     slice = Array.prototype.slice;
@@ -909,7 +965,7 @@ exports.enable = function() {
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0),
@@ -929,7 +985,7 @@ module.exports = logger;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0);
@@ -960,14 +1016,14 @@ logger.write = function(name, level, args) {
 };
 
 logger.formatters = ['color', 'minilog'];
-logger.color = __webpack_require__(13);
-logger.minilog = __webpack_require__(14);
+logger.color = __webpack_require__(14);
+logger.minilog = __webpack_require__(15);
 
 module.exports = logger;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0),
@@ -991,7 +1047,7 @@ module.exports = logger;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0),
@@ -1023,15 +1079,15 @@ module.exports = logger;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Minilog = __webpack_require__(10);
+var Minilog = __webpack_require__(11);
 
 var oldEnable = Minilog.enable,
     oldDisable = Minilog.disable,
     isChrome = (typeof navigator != 'undefined' && /chrome/i.test(navigator.userAgent)),
-    console = __webpack_require__(12);
+    console = __webpack_require__(13);
 
 // Use a more capable logging backend if on Chrome
 Minilog.defaultBackend = (isChrome ? console.minilog : console);
@@ -1063,15 +1119,15 @@ Minilog.disable = function() {
 exports = module.exports = Minilog;
 
 exports.backends = {
-  array: __webpack_require__(11),
+  array: __webpack_require__(12),
   browser: Minilog.defaultBackend,
-  localStorage: __webpack_require__(17),
-  jQuery: __webpack_require__(16)
+  localStorage: __webpack_require__(18),
+  jQuery: __webpack_require__(17)
 };
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0);
@@ -1151,7 +1207,7 @@ module.exports = AjaxLogger;
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Transform = __webpack_require__(0),
@@ -1169,62 +1225,6 @@ logger.write = function(name, level, args) {
 };
 
 module.exports = logger;
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-function M() { this._events = {}; }
-M.prototype = {
-  on: function(ev, cb) {
-    this._events || (this._events = {});
-    var e = this._events;
-    (e[ev] || (e[ev] = [])).push(cb);
-    return this;
-  },
-  removeListener: function(ev, cb) {
-    var e = this._events[ev] || [], i;
-    for(i = e.length-1; i >= 0 && e[i]; i--){
-      if(e[i] === cb || e[i].cb === cb) { e.splice(i, 1); }
-    }
-  },
-  removeAllListeners: function(ev) {
-    if(!ev) { this._events = {}; }
-    else { this._events[ev] && (this._events[ev] = []); }
-  },
-  listeners: function(ev) {
-    return (this._events ? this._events[ev] || [] : []);
-  },
-  emit: function(ev) {
-    this._events || (this._events = {});
-    var args = Array.prototype.slice.call(arguments, 1), i, e = this._events[ev] || [];
-    for(i = e.length-1; i >= 0 && e[i]; i--){
-      e[i].apply(this, args);
-    }
-    return this;
-  },
-  when: function(ev, cb) {
-    return this.once(ev, cb, true);
-  },
-  once: function(ev, cb, when) {
-    if(!cb) return this;
-    function c() {
-      if(!when) this.removeListener(ev, c);
-      if(cb.apply(this, arguments) && when) this.removeListener(ev, c);
-    }
-    c.cb = cb;
-    this.on(ev, c);
-    return this;
-  }
-};
-M.mixin = function(dest) {
-  var o = M.prototype, k;
-  for (k in o) {
-    o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
-  }
-};
-module.exports = M;
-
 
 /***/ })
 /******/ ]);
