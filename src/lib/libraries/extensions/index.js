@@ -30,11 +30,10 @@ export default [
     },
     {
         name: 'Speech',
-        extensionURL: '',
+        extensionURL: 'speech',
         iconURL: speechImage,
         description: 'Talk to your projects.',
-        featured: true,
-        disabled: true
+        featured: true
     },
     {
         name: 'Video Sensing',
