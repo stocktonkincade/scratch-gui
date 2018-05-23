@@ -85,13 +85,17 @@ var _hashParserHoc = __webpack_require__(/*! ../lib/hash-parser-hoc.jsx */ "./sr
 
 var _hashParserHoc2 = _interopRequireDefault(_hashParserHoc);
 
+var _appStateHoc = __webpack_require__(/*! ../lib/app-state-hoc.jsx */ "./src/lib/app-state-hoc.jsx");
+
+var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
+
 var _player = __webpack_require__(/*! ./player.css */ "./src/playground/player.css");
 
 var _player2 = _interopRequireDefault(_player);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var WrappedGui = (0, _hashParserHoc2.default)(_gui2.default);
+var WrappedGui = (0, _hashParserHoc2.default)((0, _appStateHoc2.default)(_gui2.default));
 
 if (false) {}
 

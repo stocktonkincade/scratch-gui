@@ -88,6 +88,10 @@ var _hashParserHoc = __webpack_require__(/*! ../lib/hash-parser-hoc.jsx */ "./sr
 
 var _hashParserHoc2 = _interopRequireDefault(_hashParserHoc);
 
+var _appStateHoc = __webpack_require__(/*! ../lib/app-state-hoc.jsx */ "./src/lib/app-state-hoc.jsx");
+
+var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
+
 var _blocksOnly = __webpack_require__(/*! ./blocks-only.css */ "./src/playground/blocks-only.css");
 
 var _blocksOnly2 = _interopRequireDefault(_blocksOnly);
@@ -95,7 +99,7 @@ var _blocksOnly2 = _interopRequireDefault(_blocksOnly);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
-    return { vm: state.vm };
+    return { vm: state.scratchGui.vm };
 };
 
 var VMBlocks = (0, _reactRedux.connect)(mapStateToProps)(_blocks2.default);
@@ -115,7 +119,7 @@ var BlocksOnly = function BlocksOnly(props) {
     );
 };
 
-var App = (0, _hashParserHoc2.default)(BlocksOnly);
+var App = (0, _hashParserHoc2.default)((0, _appStateHoc2.default)(BlocksOnly));
 
 var appTarget = document.createElement('div');
 document.body.appendChild(appTarget);

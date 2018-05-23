@@ -13,7 +13,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "html,\nbody,\n.index_app_3Qs6X {\n    /* probably unecessary, transitional until layout is refactored */\n    width: 100%; \n    height: 100%;\n    margin: 0;\n}\n\n/* @todo: move globally? Safe / side FX, for blocks particularly? */\n\n* { -webkit-box-sizing: border-box; box-sizing: border-box; }\n", ""]);
+exports.push([module.i, "html,\nbody,\n.index_app_3Qs6X {\n    /* probably unecessary, transitional until layout is refactored */\n    width: 100%; \n    height: 100%;\n    margin: 0;\n\n    /* Setting min height/width makes the UI scroll below those sizes */\n    min-width: 1024px;\n    min-height: 640px; /* Min height to fit sprite/backdrop button */\n}\n\n/* @todo: move globally? Safe / side FX, for blocks particularly? */\n\n* { -webkit-box-sizing: border-box; box-sizing: border-box; }\n", ""]);
 
 // exports
 exports.locals = {
@@ -86,6 +86,10 @@ var _hashParserHoc = __webpack_require__(/*! ../lib/hash-parser-hoc.jsx */ "./sr
 
 var _hashParserHoc2 = _interopRequireDefault(_hashParserHoc);
 
+var _appStateHoc = __webpack_require__(/*! ../lib/app-state-hoc.jsx */ "./src/lib/app-state-hoc.jsx");
+
+var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
+
 var _index = __webpack_require__(/*! ./index.css */ "./src/playground/index.css");
 
 var _index2 = _interopRequireDefault(_index);
@@ -102,7 +106,7 @@ appTarget.className = _index2.default.app;
 document.body.appendChild(appTarget);
 
 _gui2.default.setAppElement(appTarget);
-var WrappedGui = (0, _hashParserHoc2.default)(_gui2.default);
+var WrappedGui = (0, _hashParserHoc2.default)((0, _appStateHoc2.default)(_gui2.default));
 
 _reactDom2.default.render(_react2.default.createElement(WrappedGui, null), appTarget);
 
