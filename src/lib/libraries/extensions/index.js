@@ -51,7 +51,7 @@ export default [
         iconURL: microbitImage,
         description: 'Connect your projects with the physical world.',
         featured: true,
-        disabled: true
+        disabled: false
     },
     {
         name: 'LEGO WeDo 2.0',

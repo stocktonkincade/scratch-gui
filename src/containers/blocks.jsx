@@ -38,6 +38,8 @@ class Blocks extends React.Component {
             'attachVM',
             'detachVM',
             'handleCategorySelected',
+            'handleConnectionModalStart',
+            'handleConnectionModalClose',
             'handlePromptStart',
             'handlePromptCallback',
             'handlePromptClose',
@@ -55,12 +57,16 @@ class Blocks extends React.Component {
             'setBlocks'
         ]);
         this.ScratchBlocks.prompt = this.handlePromptStart;
+        this.ScratchBlocks.statusButtonCallback = this.handleConnectionModalStart;
         this.state = {
             workspaceMetrics: {},
-            prompt: null
+            prompt: null,
+            connectionModal: null
         };
         this.onTargetsUpdate = debounce(this.onTargetsUpdate, 100);
         this.toolboxUpdateQueue = [];
+
+        this.state.connectionModal = true;
     }
     componentDidMount () {
         this.ScratchBlocks.FieldColourSlider.activateEyedropper_ = this.props.onActivateColorPicker;
@@ -93,6 +99,7 @@ class Blocks extends React.Component {
     shouldComponentUpdate (nextProps, nextState) {
         return (
             this.state.prompt !== nextState.prompt ||
+            this.state.connectionModal !== nextState.connectionModal ||
             this.props.isVisible !== nextProps.isVisible ||
             this.props.toolboxXML !== nextProps.toolboxXML ||
             this.props.extensionLibraryVisible !== nextProps.extensionLibraryVisible ||
@@ -310,6 +317,15 @@ class Blocks extends React.Component {
             optVarType !== this.ScratchBlocks.BROADCAST_MESSAGE_VARIABLE_TYPE;
         this.setState(p);
     }
+    handleConnectionModalStart (extensionId) {
+        const c = {connectionModal: {
+            id: extensionId
+        }};
+        this.setState(c);
+    }
+    handleConnectionModalClose () {
+        this.setState({connectionModal: null});
+    }
     handlePromptCallback (data) {
         this.state.prompt.callback(data);
         this.handlePromptClose();
@@ -348,17 +364,20 @@ class Blocks extends React.Component {
                     {...props}
                 />
                 {this.state.prompt ? (
-                    // <Prompt
-                    //     label={this.state.prompt.message}
-                    //     placeholder={this.state.prompt.defaultValue}
-                    //     showMoreOptions={this.state.prompt.showMoreOptions}
-                    //     title={this.state.prompt.title}
-                    //     onCancel={this.handlePromptClose}
-                    //     onOk={this.handlePromptCallback}
-                    // />
-                    <ConnectionModal
-                        title={'OMG a modal 😲 🔥 💯'}
+                    <Prompt
+                        label={this.state.prompt.message}
+                        placeholder={this.state.prompt.defaultValue}
+                        showMoreOptions={this.state.prompt.showMoreOptions}
+                        title={this.state.prompt.title}
                         onCancel={this.handlePromptClose}
+                        onOk={this.handlePromptCallback}
+                    />
+                ) : null}
+                {this.state.connectionModal ? (
+                    <ConnectionModal
+                        id={this.state.connectionModal.id}
+                        vm={vm}
+                        onCancel={this.handleConnectionModalClose}
                     />
                 ) : null}
                 {extensionLibraryVisible ? (
