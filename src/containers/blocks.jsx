@@ -65,8 +65,6 @@ class Blocks extends React.Component {
         };
         this.onTargetsUpdate = debounce(this.onTargetsUpdate, 100);
         this.toolboxUpdateQueue = [];
-
-        this.state.connectionModal = true;
     }
     componentDidMount () {
         this.ScratchBlocks.FieldColourSlider.activateEyedropper_ = this.props.onActivateColorPicker;
@@ -319,7 +317,7 @@ class Blocks extends React.Component {
     }
     handleConnectionModalStart (extensionId) {
         const c = {connectionModal: {
-            id: extensionId
+            extensionId: extensionId
         }};
         this.setState(c);
     }
@@ -375,7 +373,7 @@ class Blocks extends React.Component {
                 ) : null}
                 {this.state.connectionModal ? (
                     <ConnectionModal
-                        id={this.state.connectionModal.id}
+                        extensionId={this.state.connectionModal.extensionId}
                         vm={vm}
                         onCancel={this.handleConnectionModalClose}
                     />
