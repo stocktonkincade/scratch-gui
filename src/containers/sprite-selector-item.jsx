@@ -34,7 +34,12 @@ class SpriteSelectorItem extends React.Component {
         this.props.onDrag({
             img: null,
             currentOffset: null,
-            dragging: false
+            dragging: false,
+            dragType: null,
+            index: null
+        });
+        setTimeout(() => {
+            this.noClick = false;
         });
     }
     handleMouseMove (e) {
@@ -45,8 +50,12 @@ class SpriteSelectorItem extends React.Component {
             this.props.onDrag({
                 img: this.props.costumeURL,
                 currentOffset: currentOffset,
-                dragging: true
+                dragging: true,
+                dragType: this.props.dragType,
+                index: this.props.index,
+                payload: this.props.dragPayload
             });
+            this.noClick = true;
         }
         e.preventDefault();
     }
@@ -59,7 +68,9 @@ class SpriteSelectorItem extends React.Component {
     }
     handleClick (e) {
         e.preventDefault();
-        this.props.onClick(this.props.id);
+        if (!this.noClick) {
+            this.props.onClick(this.props.id);
+        }
     }
     handleDelete (e) {
         e.stopPropagation(); // To prevent from bubbling back to handleClick
@@ -84,9 +95,11 @@ class SpriteSelectorItem extends React.Component {
             /* eslint-disable no-unused-vars */
             assetId,
             id,
+            index,
             onClick,
             onDeleteButtonClick,
             onDuplicateButtonClick,
+            dragPayload,
             receivedBlocks,
             /* eslint-enable no-unused-vars */
             ...props
@@ -109,7 +122,13 @@ SpriteSelectorItem.propTypes = {
     assetId: PropTypes.string,
     costumeURL: PropTypes.string,
     dispatchSetHoveredSprite: PropTypes.func.isRequired,
+    dragPayload: PropTypes.shape({
+        name: PropTypes.string,
+        body: PropTypes.string
+    }),
+    dragType: PropTypes.string,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    index: PropTypes.number,
     name: PropTypes.string,
     onClick: PropTypes.func,
     onDeleteButtonClick: PropTypes.func,
