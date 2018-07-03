@@ -120,7 +120,7 @@ export default [
             />
         ),
         featured: true,
-        disabled: true
+        disabled: false
     },
     {
         name: 'LEGO WeDo 2.0',
@@ -148,7 +148,7 @@ export default [
             />
         ),
         featured: true,
-        disabled: true
+        disabled: false
     },
     {
         name: 'LEGO Boost',
