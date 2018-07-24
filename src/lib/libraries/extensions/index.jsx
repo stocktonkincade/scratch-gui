@@ -8,6 +8,7 @@ import translateImage from './translate.png';
 import microbitImage from './microbit.png';
 import ev3Image from './ev3.png';
 import wedoImage from './wedo.png';
+import speechImage from './speech.png';
 
 import microbitDeviceImage from './device-connection/microbit/microbit-illustration.svg';
 import microbitMenuImage from './device-connection/microbit/microbit-small.svg';
@@ -89,6 +90,20 @@ export default [
                 id="gui.extension.googletranslate.description"
             />
         ),
+        featured: true
+    },
+    {
+        name: 'Speech Synthesis',
+        extensionId: 'text2speech',
+        iconURL: speechImage,
+        description: 'Make your projects talk.',
+        featured: true
+    },
+    {
+        name: 'Speech Recognition',
+        extensionId: 'speech',
+        iconURL: speechImage,
+        description: 'Talk to your projects.',
         featured: true
     },
     {
