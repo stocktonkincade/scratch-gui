@@ -1,10 +1,14 @@
 var GUI =
-(window["webpackJsonpGUI"] = window["webpackJsonpGUI"] || []).push([[1],{
+(window["webpackJsonpGUI"] = window["webpackJsonpGUI"] || []).push([["player"],{
 
-/***/ 410:
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/lib/index.js?!./src/playground/player.css":
+/*!******************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/postcss-loader/lib??postcss!./src/playground/player.css ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
 // imports
 
 
@@ -19,11 +23,15 @@ exports.locals = {
 
 /***/ }),
 
-/***/ 411:
+/***/ "./src/playground/player.css":
+/*!***********************************!*\
+  !*** ./src/playground/player.css ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(410);
+var content = __webpack_require__(/*! !../../node_modules/css-loader??ref--5-1!../../node_modules/postcss-loader/lib??postcss!./player.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/lib/index.js?!./src/playground/player.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -37,7 +45,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(3)(content, options);
+var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -45,7 +53,11 @@ if(false) {}
 
 /***/ }),
 
-/***/ 412:
+/***/ "./src/playground/player.jsx":
+/*!***********************************!*\
+  !*** ./src/playground/player.jsx ***!
+  \***********************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53,43 +65,43 @@ if(false) {}
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _classnames = __webpack_require__(5);
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _propTypes = __webpack_require__(1);
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _react = __webpack_require__(0);
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(32);
+var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactRedux = __webpack_require__(7);
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
-var _box = __webpack_require__(17);
+var _box = __webpack_require__(/*! ../components/box/box.jsx */ "./src/components/box/box.jsx");
 
 var _box2 = _interopRequireDefault(_box);
 
-var _gui = __webpack_require__(152);
+var _gui = __webpack_require__(/*! ../containers/gui.jsx */ "./src/containers/gui.jsx");
 
 var _gui2 = _interopRequireDefault(_gui);
 
-var _hashParserHoc = __webpack_require__(117);
+var _hashParserHoc = __webpack_require__(/*! ../lib/hash-parser-hoc.jsx */ "./src/lib/hash-parser-hoc.jsx");
 
 var _hashParserHoc2 = _interopRequireDefault(_hashParserHoc);
 
-var _appStateHoc = __webpack_require__(116);
+var _appStateHoc = __webpack_require__(/*! ../lib/app-state-hoc.jsx */ "./src/lib/app-state-hoc.jsx");
 
 var _appStateHoc2 = _interopRequireDefault(_appStateHoc);
 
-var _mode = __webpack_require__(101);
+var _mode = __webpack_require__(/*! ../reducers/mode */ "./src/reducers/mode.js");
 
-var _player = __webpack_require__(411);
+var _player = __webpack_require__(/*! ./player.css */ "./src/playground/player.css");
 
 var _player2 = _interopRequireDefault(_player);
 
@@ -97,12 +109,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-if ("production" === 'production' && (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object') {
-    // Warn before navigating away
-    window.onbeforeunload = function () {
-        return true;
-    };
-}
+if (false) {}
 
 var Player = function Player(_ref) {
     var isPlayerOnly = _ref.isPlayerOnly,
@@ -153,5 +160,5 @@ _reactDom2.default.render(_react2.default.createElement(WrappedPlayer, { isPlaye
 
 /***/ })
 
-},[[412,0]]]);
+},[["./src/playground/player.jsx","lib.min"]]]);
 //# sourceMappingURL=player.js.map
