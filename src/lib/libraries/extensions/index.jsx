@@ -9,6 +9,7 @@ import microbitImage from './microbit.png';
 import ev3Image from './ev3.png';
 import wedoImage from './wedo.png';
 import speechImage from './speech.png';
+import text2SpeechImage from './text2speech.png';
 
 import microbitDeviceImage from './device-connection/microbit/microbit-illustration.svg';
 import microbitMenuImage from './device-connection/microbit/microbit-small.svg';
@@ -95,7 +96,7 @@ export default [
     {
         name: 'Speech Synthesis',
         extensionId: 'text2speech',
-        iconURL: speechImage,
+        iconURL: text2SpeechImage,
         description: 'Make your projects talk.',
         featured: true
     },
