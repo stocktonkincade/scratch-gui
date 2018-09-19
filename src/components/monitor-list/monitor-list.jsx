@@ -21,7 +21,7 @@ const stageSizeToTransform = ({width, height, widthDefault, heightDefault}) => {
 const MonitorList = props => (
     <Box
         // Use static `monitor-overlay` class for bounds of draggables
-        className={classNames(styles.monitorList, 'monitor-overlay')}
+        className={classNames(styles.monitorList, 'monitor-overlay', props.className)}
         style={{
             width: props.stageSize.width,
             height: props.stageSize.height
@@ -57,6 +57,7 @@ const MonitorList = props => (
 );
 
 MonitorList.propTypes = {
+    className: PropTypes.string,
     draggable: PropTypes.bool.isRequired,
     monitors: PropTypes.instanceOf(OrderedMap),
     onMonitorChange: PropTypes.func.isRequired,

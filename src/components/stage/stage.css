@@ -28,7 +28,7 @@
     z-index: $z-index-stage-with-color-picker;
 }
 
-.color-picker-background {
+.color-picker-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -43,7 +43,8 @@
     position: relative;
 }
 
-.stage-wrapper-overlay {
+/* In full screen mode, hide the rest of the GUI behind the stage  */
+.fullscreen-wrapper {
     position: fixed;
     top: $stage-menu-height;
     left: 0;
@@ -56,8 +57,8 @@
     padding: $stage-full-screen-stage-padding;
 }
 
-/* wraps only main content of overlay player, not monitors */
-.stage-overlay-content {
+/* In full screen mode, apply to the wrapper of the stage content */
+.fullscreen-content {
     outline: none;
     margin: auto;
     border: $stage-full-screen-border-width solid rgb(126, 133, 151);
@@ -70,37 +71,29 @@
     justify-content: center;
 }
 
-.stage-overlay-content-border-override {
-    border: none;
-}
-
 .question-wrapper {
     position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
-/* adjust monitors when stage is standard size:
-shift them down and right to compensate for the stage's border */
-.stage-wrapper .monitor-wrapper {
-    top: $stage-standard-border-width;
-    left: $stage-standard-border-width;
+.question {
+    margin: $space;
 }
 
-/* adjust monitors when stage is full screen:
-.stage-wrapper-overlay uses position: fixed instead of relative, so we need
-to adjust for the border using a different method */
-.stage-wrapper-overlay .monitor-wrapper {
-    padding-top: calc($stage-full-screen-stage-padding + $stage-full-screen-border-width);
-    padding-bottom: calc($stage-full-screen-stage-padding + $stage-full-screen-border-width);
+.tbd-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    overflow: hidden;
+    /* Make sure border is not included in size calculation */
+    box-sizing: content-box !important;
 }
 
-.monitor-wrapper, .color-picker-wrapper, .queston-wrapper {
+.monitor-list {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
 }
 
 .dragging-sprite {

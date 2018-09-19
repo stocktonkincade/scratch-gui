@@ -25,13 +25,19 @@ class Question extends React.Component {
         this.props.onQuestionAnswered(this.state.answer);
     }
     render () {
+        const {
+            question,
+            onQuestionAnswered, // eslint-disable-line no-unused-vars
+            ...props
+        } = this.props;
         return (
             <QuestionComponent
                 answer={this.state.answer}
-                question={this.props.question}
+                question={question}
                 onChange={this.handleChange}
                 onClick={this.handleSubmit}
                 onKeyPress={this.handleKeyPress}
+                {...props}
             />
         );
     }

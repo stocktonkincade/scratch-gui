@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 import styles from './question.css';
 import Input from '../forms/input.jsx';
 import enterIcon from './icon--enter.svg';
@@ -7,35 +8,34 @@ import enterIcon from './icon--enter.svg';
 const QuestionComponent = props => {
     const {
         answer,
+        className,
         question,
         onChange,
         onClick,
         onKeyPress
     } = props;
     return (
-        <div className={styles.questionWrapper}>
-            <div className={styles.questionContainer}>
-                {question ? (
-                    <div className={styles.questionLabel}>{question}</div>
-                ) : null}
-                <div className={styles.questionInput}>
-                    <Input
-                        autoFocus
-                        value={answer}
-                        onChange={onChange}
-                        onKeyPress={onKeyPress}
+        <div className={classNames(className, styles.questionContainer)}>
+            {question ? (
+                <div className={styles.questionLabel}>{question}</div>
+            ) : null}
+            <div className={styles.questionInput}>
+                <Input
+                    autoFocus
+                    value={answer}
+                    onChange={onChange}
+                    onKeyPress={onKeyPress}
+                />
+                <button
+                    className={styles.questionSubmitButton}
+                    onClick={onClick}
+                >
+                    <img
+                        className={styles.questionSubmitButtonIcon}
+                        draggable={false}
+                        src={enterIcon}
                     />
-                    <button
-                        className={styles.questionSubmitButton}
-                        onClick={onClick}
-                    >
-                        <img
-                            className={styles.questionSubmitButtonIcon}
-                            draggable={false}
-                            src={enterIcon}
-                        />
-                    </button>
-                </div>
+                </button>
             </div>
         </div>
     );
@@ -43,6 +43,7 @@ const QuestionComponent = props => {
 
 QuestionComponent.propTypes = {
     answer: PropTypes.string,
+    className: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
     onKeyPress: PropTypes.func.isRequired,

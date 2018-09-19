@@ -34,7 +34,7 @@ const StageComponent = props => {
             <Box
                 className={classNames({
                     [styles.stageWrapper]: !isFullScreen,
-                    [styles.stageWrapperOverlay]: isFullScreen,
+                    [styles.fullscreenWrapper]: isFullScreen,
                     [styles.withColorPicker]: !isFullScreen && isColorPicking
                 })}
                 style={{
@@ -43,47 +43,48 @@ const StageComponent = props => {
                 }}
                 onDoubleClick={onDoubleClick}
             >
-                <DOMElementRenderer
+                <div
                     className={classNames(
-                        styles.stage,
-                        {[styles.stageOverlayContent]: isFullScreen}
+                        styles.tbdWrapper,
+                        {[styles.fullscreenContent]: isFullScreen}
                     )}
-                    domElement={canvas}
                     style={{
                         height: stageDimensions.height,
-                        width: stageDimensions.width
+                        width: stageDimensions.width,
+                        marginLeft: stageDimensions.width * -0.5
                     }}
-                    {...boxProps}
-                />
-                <Box className={styles.monitorWrapper}>
+                >
+                    <DOMElementRenderer
+                        className={classNames(
+                            styles.stage
+                        )}
+                        domElement={canvas}
+                        style={{
+                            height: stageDimensions.height,
+                            width: stageDimensions.width
+                        }}
+                        {...boxProps}
+                    />
                     <MonitorList
+                        className={styles.monitorList}
                         draggable={useEditorDragStyle}
                         stageSize={stageDimensions}
                     />
-                </Box>
-                {isColorPicking && colorInfo ? (
-                    <Box className={styles.colorPickerWrapper}>
+                    {isColorPicking && colorInfo ? (
                         <Loupe colorInfo={colorInfo} />
-                    </Box>
-                ) : null}
-                {question === null ? null : (
-                    <div
-                        className={classNames(
-                            styles.stageOverlayContent,
-                            styles.stageOverlayContentBorderOverride
-                        )}
-                    >
+                    ) : null}
+                    {question === null ? null : (
                         <div
                             className={styles.questionWrapper}
-                            style={{width: stageDimensions.width}}
                         >
                             <Question
+                                className={styles.question}
                                 question={question}
                                 onQuestionAnswered={onQuestionAnswered}
                             />
                         </div>
-                    </div>
-                )}
+                    )}
+                </div>
                 <canvas
                     className={styles.draggingSprite}
                     height={0}
@@ -93,7 +94,7 @@ const StageComponent = props => {
             </Box>
             {isColorPicking ? (
                 <Box
-                    className={styles.colorPickerBackground}
+                    className={styles.colorPickerOverlay}
                     onClick={onDeactivateColorPicker}
                 />
             ) : null}
