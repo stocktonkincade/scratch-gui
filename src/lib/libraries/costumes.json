@@ -2795,6 +2795,126 @@
         ]
     },
     {
+        "name": "Dinosaur5-a",
+        "md5": "42e3bf118c775ba54239af4276800a0a.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            208,
+            300,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-b",
+        "md5": "5a0832162a0cfa7adab6090c42e89714.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            224,
+            332,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-c",
+        "md5": "26fca11e4251d60ed7aa5d08f4ae2a69.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            224,
+            300,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-d",
+        "md5": "c4044a3badea77ced4f2db69aff866ed.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            180,
+            268,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-e",
+        "md5": "f49b3b098a24474f20c8f4686681c611.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            176,
+            300,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-f",
+        "md5": "9d200a7c2e93eac8cf52ede3a87d7969.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            188,
+            332,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-g",
+        "md5": "5882227a9e2f0f3b2014c49328969762.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            204,
+            300,
+            2
+        ]
+    },
+    {
+        "name": "Dinosaur5-h",
+        "md5": "3b2cf97b1cc7fc535162ba5849a0e29c.png",
+        "type": "costume",
+        "tags": [
+            "animals",
+            "dinosaur",
+            "leigh mcg"
+        ],
+        "info": [
+            216,
+            268,
+            2
+        ]
+    },
+    {
         "name": "Diver1",
         "md5": "853803d5600b66538474909c5438c8ee.svg",
         "type": "costume",
