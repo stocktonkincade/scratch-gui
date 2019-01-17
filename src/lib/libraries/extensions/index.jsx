@@ -89,6 +89,26 @@ export default [
     {
         name: (
             <FormattedMessage
+                defaultMessage="Body Sensing"
+                description="Name for the 'Body Sensing' extension"
+                id="gui.extension.bodysensing.name"
+            />
+        ),
+        extensionId: 'bodySensing',
+        iconURL: videoImage,
+        insetIconURL: videoInsetImage,
+        description: (
+            <FormattedMessage
+                defaultMessage="Sense body position with the camera."
+                description="Description for the 'Body Sensing' extension"
+                id="gui.extension.bodysensing.description"
+            />
+        ),
+        featured: true
+    },
+    {
+        name: (
+            <FormattedMessage
                 defaultMessage="Text to Speech"
                 description="Name for the Text to Speech extension"
                 id="gui.extension.text2speech.name"
